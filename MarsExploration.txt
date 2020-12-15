@@ -1,0 +1,42 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    static int marsExploration(String s) {
+    
+        String s2 = "";
+        int cnt = 0;
+        
+        for (int i=0; i<s.length()/3; i++) {
+            s2 += "SOS";
+        }
+        for (int i=0; i<s.length(); i++) {
+            if (s.charAt(i) != s2.charAt(i))
+                cnt++;
+        }
+        return cnt;
+    }
+
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) throws IOException {
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        String s = scanner.nextLine();
+
+        int result = marsExploration(s);
+
+        bufferedWriter.write(String.valueOf(result));
+        bufferedWriter.newLine();
+
+        bufferedWriter.close();
+
+        scanner.close();
+    }
+}
