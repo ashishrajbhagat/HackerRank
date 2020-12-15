@@ -1,0 +1,47 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    static void kaprekarNumbers(int p, int q) {
+        
+        long square;
+        int l, r, found = 0;
+        String s, s1, s2;
+
+        for (int i = p; i <= q; i++) {
+            square = (long) i * i;
+            s = String.valueOf(square);
+            s1 = s.substring(0, s.length() / 2);
+            s2 = s.substring(s.length() / 2);
+            l = (s1.isEmpty())  ? 0 : Integer.parseInt(s1);
+            r = (s2.isEmpty()) ? 0 : Integer.parseInt(s2);
+            if (l + r == i) {
+                found = 1;
+                System.out.print(i + " ");
+            }
+        }
+        
+        if (found == 0)
+            System.out.println("INVALID RANGE");
+    }
+
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        int p = scanner.nextInt();
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+
+        int q = scanner.nextInt();
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+
+        kaprekarNumbers(p, q);
+
+        scanner.close();
+    }
+}
